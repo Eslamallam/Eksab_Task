@@ -14,16 +14,13 @@ export const CommentSection = ({
   repoId,
   comment,
   commentInput,
+  hasError,
 }) => {
-  const hasError = (field) =>
-    !!(commentInput.touched[field] && commentInput.errors[field]);
-
   return (
     <FormControl className={""}>
       <InputLabel>Leave a comment...</InputLabel>
       <Input
         error={hasError("comment")}
-        helperText={hasError("comment") ? commentInput.errors.comment[0] : null}
         type="text"
         onChange={handleInputChange}
         value={comment || ""}

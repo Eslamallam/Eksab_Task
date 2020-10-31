@@ -1,6 +1,6 @@
 import React from "react";
 import toast from "toasted-notes";
-import { MdErrorOutline, MdInfoOutline } from "react-icons/md";
+import { MdErrorOutline } from "react-icons/md";
 import { FiX, FiCheckCircle } from "react-icons/fi";
 
 const colors = {
@@ -44,6 +44,8 @@ const InvokeBasicAlert = (text, type) => {
         />
       );
       break;
+    default:
+      return null;
   }
 
   toast.notify(

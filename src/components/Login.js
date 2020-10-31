@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     backgroundColor: "#f6f6f6",
     color: "#000",
-    padding: theme.spacing(4),
+    padding: theme.spacing(5),
   },
   content: {
     "& > *": {

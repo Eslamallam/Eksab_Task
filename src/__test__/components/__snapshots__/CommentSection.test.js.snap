@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CommentSection correctly 1`] = `
+<WithStyles(ForwardRef(FormControl))
+  className=""
+>
+  <WithStyles(ForwardRef(InputLabel))>
+    Leave a comment...
+  </WithStyles(ForwardRef(InputLabel))>
+  <WithStyles(ForwardRef(Input))
+    endAdornment={
+      <WithStyles(ForwardRef(InputAdornment))
+        position="end"
+      >
+        <WithStyles(ForwardRef(IconButton))
+          disabled={false}
+          onClick={[Function]}
+        >
+          <Memo(SendIcon) />
+        </WithStyles(ForwardRef(IconButton))>
+      </WithStyles(ForwardRef(InputAdornment))>
+    }
+    name="comment"
+    type="text"
+    value=""
+  />
+</WithStyles(ForwardRef(FormControl))>
+`;

@@ -7,7 +7,7 @@ export const getService = (
   },
   params = {}
 ) => {
-  return Axios.get(`${route}`, {
+  return Axios.get(`${process.env.REACT_APP_BASE_URL}${route}`, {
     headers: headers,
     params: params,
   });

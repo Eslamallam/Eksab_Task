@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Login correctly 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <WithStyles(ForwardRef(Card))
+    className="makeStyles-card-2"
+  >
+    <WithStyles(ForwardRef(CardContent))
+      className="makeStyles-content-3"
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="h4"
+      >
+        Welcome
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        To Eksab Task
+      </WithStyles(ForwardRef(Typography))>
+      <t
+        buttonText="Sign in with GitHub"
+        className="makeStyles-gitHubBtn-4"
+        clientId="2648c2f6c78a6b50b7bc"
+        onFailure={[Function]}
+        onRequest={[Function]}
+        onSuccess={[Function]}
+        redirectUri="http://localhost:3000/home"
+        scope="user:email"
+      />
+    </WithStyles(ForwardRef(CardContent))>
+    <WithStyles(ForwardRef(CardMedia))
+      className="makeStyles-cover-5"
+      image="login.svg"
+      title="Eksab"
+    />
+  </WithStyles(ForwardRef(Card))>
+</div>
+`;

@@ -10,6 +10,7 @@ import {
   ListItemSecondaryAction,
   Typography,
   IconButton,
+  CircularProgress,
 } from "@material-ui/core";
 import CommentIcon from "@material-ui/icons/Comment";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,11 +41,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: ".5rem",
     backgroundColor: "#f8f8f8",
   },
+  loader: {
+    textAlign: "center",
+  },
 }));
 
 export const GitHubRepos = () => {
   const classes = useStyles();
-  const [size, setSize] = useState(15);
+  const dispatch = useDispatch();
+  const [size, setSize] = useState(5);
   const [appendInput, setAppendInput] = useState(false);
   const [itemID, setItemId] = useState(0);
   const [hideCommentBtn, setHideCommentBtn] = useState(false);
@@ -55,10 +60,28 @@ export const GitHubRepos = () => {
     errors: {},
     touched: {},
   });
-  const dispatch = useDispatch();
+
+  //-------------------------------
+  // Data Fetching
+  //-------------------------------
+
+  const loadFunc = (page) => {
+    dispatch(
+      actions.getAllGitHubPublicRepos({
+        q: "react",
+        page: page,
+        per_page: size,
+      })
+    );
+  };
 
   const repos = useSelector((state) => state.getAllRepos.response);
 
+  //
+
+  //-------------------------------
+  // Input Validation
+  //-------------------------------
   useEffect(() => {
     const errors = validate(commentInput.value, schema);
 
@@ -69,11 +92,14 @@ export const GitHubRepos = () => {
     }));
   }, [commentInput.value]);
 
-  const loadFunc = (page) => {
-    dispatch(
-      actions.getAllGitHubPublicRepos({ q: "js", page: page, per_page: size })
-    );
-  };
+  const hasError = (field) =>
+    !!(commentInput.touched[field] && commentInput.errors[field]);
+
+  //
+
+  //-------------------------------
+  // handling user interactions
+  //-------------------------------
 
   const handleItemClick = (id) => {
     setItemId(id);
@@ -98,21 +124,23 @@ export const GitHubRepos = () => {
   };
 
   const handleSaveComment = (id) => {
-    console.log(commentInput.value.comment);
     setItemInLocalStorage(`C${id}`, commentInput.value.comment);
 
     const getComment = getItemFromLocalStorage(`C${id}`);
     setShowComment(getComment);
   };
 
+  //
+
   return (
     <InfiniteScroll
       pageStart={0}
       loadMore={loadFunc}
       hasMore={true}
+      initialLoad={true}
       loader={
-        <div className="loader" key={0}>
-          Loading ...
+        <div className={classes.loader} key={0}>
+          <CircularProgress size={30} />
         </div>
       }
     >
@@ -145,6 +173,7 @@ export const GitHubRepos = () => {
                         repoId={repo.id}
                         comment={commentInput.value.comment}
                         commentInput={commentInput}
+                        hasError={hasError}
                       />
                     ) : null}
                   </ListItemSecondaryAction>
