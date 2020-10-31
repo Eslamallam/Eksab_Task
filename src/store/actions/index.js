@@ -1,0 +1,1 @@
+export { getAllGitHubPublicRepos } from "./getAllGitHubRepos";
