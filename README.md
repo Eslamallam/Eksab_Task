@@ -1,4 +1,4 @@
-# Getting Started with Eksab Task
+# Getting Started with GitHub-public-repos
 
 ## Available Scripts
 
